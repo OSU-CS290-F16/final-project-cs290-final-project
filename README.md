@@ -1,2 +1,3 @@
 # final-project-cs290-final-project
-final-project-cs290-final-project created by GitHub Classroom
+CS290 Final Project
+Members: Brandon Wong, Abhijith Atkuru
