@@ -1,0 +1,77 @@
+<div id="content">
+    <div class="user">
+        <img src="img/avatar.jpg" alt=""/> 
+        <div id="gender">gender</div> 
+        <br/>
+        Name: <span id="full_name">full_name</span>
+        <br/> 
+        Username: <span id="username">username</span>
+        <br/> 
+        Email: <span id="email">email</span>
+        <br/> 
+        Birthday: <span id="birthday">birthday</span>
+    </div> 
+    <div class="logout">
+        <nav class="login-nav"> 
+            <form action="/logout" method="get"> 
+                <input type="submit" name="submit" value="Logout"> 
+                <div id="first_name">first_name</div> 
+            </form> 
+        </nav>  
+    </div> 
+</div>
+<div class="blog_entry">
+    <input type="button" name="enter" id="btn_enter" value="Enter">
+    <div id="entry"></div>
+    <textarea cols="20" rows="5" style="display: none;" id="txt_blog"></textarea> 
+    <input type="button" name="save" id="btn_save" style="display: none;" value="Save">
+</div> 
+<footer>
+    <p>&copy; 2016 Final Project Blog</p>
+</footer>
+<script>
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "http://localhost:8000/get_user",
+            type: 'POST',
+            success: function (result) {
+                $("#first_name").html(result.user.fname);
+                $("#gender").html(result.user.gender);
+                $("#full_name").html(result.user.fname + " " + result.user.lname);
+                $("#username").html(result.user.username);
+                $("#email").html(result.user.email);
+                $("#birthday").html(result.user.birthday);
+                $("#entry").html(result.user.blog);
+            }
+        });
+
+        $("#btn_enter").click(function () {
+            $("#txt_blog").show(500);
+            $("#btn_enter").hide(500);
+            $("#btn_save").show(500);
+        });
+
+        $("#btn_save").click(function () {
+
+            $.ajax({
+                url: "http://localhost:8000/save_text_blog",
+                type: 'POST',
+                data: "blog=" + $("#txt_blog").val(),
+                success: function (result) {
+                    $("#first_name").html(result.user.fname);
+                    $("#gender").html(result.user.gender);
+                    $("#full_name").html(result.user.fname + " " + result.user.lname);
+                    $("#username").html(result.user.username);
+                    $("#email").html(result.user.email);
+                    $("#birthday").html(result.user.birthday);
+                    $("#entry").html(result.user.blog);
+
+                    $("#txt_blog").hide(500);
+                    $("#btn_enter").show(500);
+                    $("#btn_save").hide(500);
+                }
+            });
+        });
+    });
+</script>
