@@ -1,0 +1,95 @@
+body {
+    width: 960px;
+    margin: auto;
+    border: 1px solid gray;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-top: 20px;
+}
+#content {
+    width:100%;
+    height:auto;
+    display:flex;
+}
+.description {
+    width:50%;
+    margin:10px;
+}
+.login {
+    width:50%;
+}
+.login-nav {
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 10px;
+    background-color: lavender;
+}
+
+footer {
+    margin-top: 50px;
+    text-align: center;
+    background-color: lavender;
+    padding: 10px;
+    border-top: 1px solid orangered;
+}
+.signup-btn {
+    width: 100%;
+    border: 2px solid orangered;
+    color: orangered;
+    font-weight: bold;
+    border-radius: 10px;
+    height: 35px;
+    background-color: white;
+    margin-top: 20px;
+}
+.signup-btn:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border: 2px solid green;
+    color: gray;
+}
+.error {
+    text-align: center;
+    color: red;
+    border-bottom: 1px solid gray;
+}
+.success {
+    text-align: center;
+    color: green;
+    border-bottom: 1px solid gray;
+}
+
+.user{
+    width:70%;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.logout {
+    width:30%;
+}
+
+.blog_entry {
+    width: 300px;
+    margin: auto;
+}
+#btn_enter{
+    width: 100%;
+}
+#first_name {
+    display: inline;
+}
+
+#gender {
+    display: inline;
+}
+#txt_blog {
+    width: 100%;
+
+}
+
+#entry {
+    width: 100%;
+    margin-top: 10px;
+    background-color: lightgray;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+     margin-bottom: 10px;
+}
