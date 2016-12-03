@@ -22,7 +22,7 @@ var authorized_user = '';
 // callback function
 function requestHandler(request, response) {
 
-    if (request.url.indexOf('.css') != -1) { //request.url has the pathname, check if it conatins '.css'
+    if (request.url.indexOf('.css') != -1) { //request.url has the pathname, check if it contains '.css'
 
         fs.readFile(__dirname + request.url, function (err, data) {
             if (err)
