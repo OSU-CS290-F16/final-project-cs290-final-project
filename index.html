@@ -1,1 +1,58 @@
 
+<div id="content">
+    <div class="description">
+        <h3>Description:</h3>
+        <p>Login: To enter you need to fill in the username and password in the login form. And then press the ENTER key on the keyboard. The focus must be on the text box with a password.</p>
+        <p>Sign up: To register, you need to fill in all required fields on the registration form and click button "Sign up". </p>
+    </div>
+    <div class="login">
+        <nav class="login-nav"> 
+            <form action="http://localhost:8000/login" method="post" id="login_form">
+                Login:
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" class="submit_on_enter" placeholder="Password"> 
+            </form> 
+        </nav> 
+        <form action="/register" method="post" id="register_form" >
+            <h2>Create Account</h2>
+            <table>
+                <tr>
+                    <td><input type="text" name="fname" placeholder="First Name" required> <hr/></td>
+                    <td><input type="text" name="lname" placeholder="Last Name" required> <hr/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="username" placeholder="Username" required> <hr/></td>
+                    <td><input type="password" name="password" placeholder="Password" required> <hr/></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="email" name="email" placeholder="Email" required></td> 
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text" name="bdate" placeholder="Birthdate" required><hr/></td> 
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="radio" name="gender" value="male" required>Male <input type="radio" name="gender" value="female">Female</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="signup" class="signup-btn" value="Sign up"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2016 Final Project Blog</p>
+</footer>
+<script>
+    $(document).ready(function () {
+        $(".submit_on_enter").keydown(function (event) {
+            // enter has keyCode = 13, change it if you want to use another button
+            if (event.keyCode == 13) {
+                this.form.submit();
+                return false;
+            }
+        }); 
+    });
+</script>
