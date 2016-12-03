@@ -130,9 +130,6 @@ function requestHandler(request, response) {
 
                 var user = JSON.parse(data);
                     
-                    
-                    
-                    
                     //Update to userdata.json
                 var user_data = {
                     fname: user.fname,
