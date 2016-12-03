@@ -129,3 +129,122 @@ function requestHandler(request, response) {
                     throw err;
 
                 var user = JSON.parse(data);
+                    
+                    
+                    
+                    
+                    //Update to userdata.json
+                var user_data = {
+                    fname: user.fname,
+                    lname: user.lname,
+                    username: user.username,
+                    password: user.password,
+                    email: user.email,
+                    birthday: user.birthday,
+                    gender: user.gender,
+                    blog: POST.blog
+                }
+                fs.writeFile("userdata.json", JSON.stringify(user_data), 'utf8', function (err) {
+                    if (err)
+                        return next(err);
+                })
+                //end
+                
+                 var json = JSON.stringify({
+                    user: user_data
+                });
+                response.writeHead(200, {"Content-Type": "application/json"});
+                response.end(json);
+
+                
+
+            });
+
+        });
+    }
+
+    if (request.url == "/register" && request.method == "POST") {
+        var body = '';
+        request.on('data', function (data) {
+            body += data;
+        });
+        request.on('end', function () {
+            var POST = qs.parse(body);
+
+            fs.readFile('userdata.json', function (err, data) {
+                if (err)
+                    throw err;
+
+                //INSERT to userdata.json
+                var user_data = {
+                    fname: POST.fname,
+                    lname: POST.lname,
+                    username: POST.username,
+                    password: POST.password,
+                    email: POST.email,
+                    birthday: POST.birthday,
+                    gender: POST.gender,
+                    blog: ""
+                }
+                fs.writeFile("userdata.json", JSON.stringify(user_data), 'utf8', function (err) {
+                    if (err)
+                        return next(err);
+                })
+                //end
+
+                var head = fs.readFileSync("head.html").toString();
+                var body = fs.readFileSync("index.html").toString();
+                // serve up the client page.
+                response.writeHead(200, {'Content-Type': 'text/html'});
+                response.write("<!DOCTYPE html>");
+                response.write("<html>");
+                response.write(head);
+                response.write("<body>");
+                response.write("<div class='success'>Thank you for registration. Please login</div>");
+                response.write(body);
+                response.write("</body>");
+                response.write("</html>");
+                response.end();
+
+            });
+
+        });
+    }
+
+    if (request.url == "/get_user" && request.method == "POST") {
+
+        fs.readFile('userdata.json', function (err, data) {
+            if (err)
+                throw err;
+            var user = JSON.parse(data);
+            if (authorized_user != '') {
+                var json = JSON.stringify({
+                    user: user
+                });
+                response.writeHead(200, {"Content-Type": "application/json"});
+                response.end(json);
+            }
+        });
+
+
+    }
+
+    if (request.url == "/logout?submit=Logout" && request.method == "GET") {
+        authorized_user = '';
+
+        var head = fs.readFileSync("head.html").toString();
+        var body = fs.readFileSync("index.html").toString();
+        // serve up the client page.
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.write("<!DOCTYPE html>");
+        response.write("<html>");
+        response.write(head);
+        response.write("<body>");
+        response.write(body);
+        response.write("</body>");
+        response.write("</html>");
+        response.end();
+    }
+
+}
+
