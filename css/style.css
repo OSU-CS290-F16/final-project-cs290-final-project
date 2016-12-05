@@ -1,10 +1,14 @@
-body {
+/*body {
     width: 960px;
     margin: auto;
     border: 1px solid gray;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     margin-top: 20px;
-}
+}*/
+
+/*div{
+  background-color: black;    // for background of main page
+}*/
 #content {
     width:100%;
     height:auto;
