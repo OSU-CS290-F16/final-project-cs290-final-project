@@ -1,6 +1,7 @@
 {
-    "name": "NodeJsApplication",
+    "name": "final-project-blog",
     "main": "server.js",
+    "description": "Blog for single user",
     "version": "1.0.0",
     "keywords": ["util", "functional", "server", "client", "browser"],
     "author": "Admin",
@@ -8,6 +9,10 @@
     "dependencies": {},
     "scripts": {
         "start": "node server.js"
+    },
+    "respository": {
+      "type": "git",
+      "url": "https://github.com/OSU-CS290-F16/final-project-cs290-final-project"
     }
 
 }
